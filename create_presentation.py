@@ -332,22 +332,26 @@ def slide_01_title(prs):
     add_fade_animation(s, sub, 800)
 
     # Members card
-    card = add_rect(s, 0.6, 4.6, 5.5, 2.4, fill_color=DARK_CARD, line_color=ACCENT_BLUE, line_width=1.5)
+    card = add_rect(s, 0.6, 4.4, 5.5, 2.7, fill_color=DARK_CARD, line_color=ACCENT_BLUE, line_width=1.5)
     add_fade_animation(s, card, 900)
 
-    pres_by = add_text(s, "Presented by", 0.6, 4.6, 5.5, 0.45,
-                       font_size=13, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
+    pres_by = add_text(s, "Presented by", 0.6, 4.45, 5.5, 0.35,
+                       font_size=12, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
     add_fade_animation(s, pres_by, 1000)
 
-    members = [
-        "▸  Member 1",
-        "▸  Member 2",
-        "▸  Member 3",
-        "▸  Member 4",
-        "▸  Member 5",
+    dept_batch = add_text(s, "Textile Department  |  Batch 232", 0.6, 4.8, 5.5, 0.35,
+                          font_size=12, bold=True, color=GREEN, align=PP_ALIGN.CENTER)
+    add_fade_animation(s, dept_batch, 1050)
+
+    ids = [
+        "232-093-801",
+        "232-171-801",
+        "232-172-801",
+        "232-236-801",
+        "232-282-801",
     ]
-    for i, m in enumerate(members):
-        mt = add_text(s, m, 0.9, 5.05 + i * 0.34, 4.9, 0.35,
+    for i, m_id in enumerate(ids):
+        mt = add_text(s, f"▸  ID: {m_id}", 1.2, 5.15 + i * 0.35, 4.3, 0.35,
                       font_size=13, bold=False, color=WHITE, align=PP_ALIGN.LEFT)
         add_fade_animation(s, mt, 1100 + i * 150)
 
