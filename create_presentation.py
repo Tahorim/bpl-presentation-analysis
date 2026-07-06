@@ -298,13 +298,8 @@ def slide_01_title(prs):
     s = blank_slide(prs)
     fill_bg(s, DARK_BG)
 
-    # Background image (stadium split screen)
-    img_path = r"C:\Users\mdsom\Desktop\Tahorim AI\Abid\user_split_image.jpg"
-    if os.path.exists(img_path):
-        s.shapes.add_picture(img_path, Inches(0), Inches(0), Inches(13.33), Inches(7.5))
-
-    # Translucent overlay
-    overlay = add_overlay_rect(s, 0, 0, 13.33, 7.5, DARK_BG, 0.80)
+    # Gradient background subtle bar on the left side
+    bar = add_gradient_rect(s, 0, 0, 6.5, 7.5, RGBColor(0x0A,0x0E,0x1A), RGBColor(0x10,0x18,0x2E), 90)
 
     # Green accent top bar
     top = add_rect(s, 0, 0, 13.33, 0.12, fill_color=GREEN)
@@ -315,32 +310,32 @@ def slide_01_title(prs):
     add_fade_animation(s, red_line, 100)
 
     # Football emoji decoration
-    emoji = add_text(s, "⚽ 🏆", 0.3, 0.3, 3, 0.8, font_size=28, bold=True, color=GOLD)
+    emoji = add_text(s, "⚽ 🏆", 0.6, 0.4, 3, 0.8, font_size=28, bold=True, color=GOLD)
     add_fade_animation(s, emoji, 200)
 
-    # Main Title
-    t1 = add_text(s, "Why Bangladesh Premier League", 0.5, 1.1, 12.3, 1.2,
-                  font_size=38, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
+    # Main Title (Left aligned)
+    t1 = add_text(s, "Why Bangladesh Premier League", 0.6, 1.2, 5.8, 1.6,
+                  font_size=32, bold=True, color=WHITE, align=PP_ALIGN.LEFT)
     add_fly_in_animation(s, t1, 300)
 
-    t2 = add_text(s, "Fails to Attract Urban Youth", 0.5, 2.2, 12.3, 1.0,
-                  font_size=38, bold=True, color=GREEN, align=PP_ALIGN.CENTER)
+    t2 = add_text(s, "Fails to Attract Urban Youth", 0.6, 2.7, 5.8, 0.8,
+                  font_size=32, bold=True, color=GREEN, align=PP_ALIGN.LEFT)
     add_fly_in_animation(s, t2, 500)
 
     # Subtitle divider line
-    div = add_rect(s, 3.5, 3.3, 6.33, 0.05, fill_color=GOLD)
+    div = add_rect(s, 0.6, 3.6, 5.0, 0.05, fill_color=GOLD)
     add_fade_animation(s, div, 700)
 
     # Subtitle
-    sub = add_text(s, "A Research-Based Presentation on Football Culture & Fan Behavior", 0.5, 3.5, 12.3, 0.6,
-                   font_size=15, bold=False, color=LIGHT_GRAY, align=PP_ALIGN.CENTER, italic=True)
+    sub = add_text(s, "A Research-Based Presentation on Football Culture & Fan Behavior", 0.6, 3.8, 5.8, 0.8,
+                   font_size=14, bold=False, color=LIGHT_GRAY, align=PP_ALIGN.LEFT, italic=True)
     add_fade_animation(s, sub, 800)
 
     # Members card
-    card = add_rect(s, 3.8, 4.3, 5.7, 2.5, fill_color=DARK_CARD, line_color=ACCENT_BLUE, line_width=1.5)
+    card = add_rect(s, 0.6, 4.6, 5.5, 2.4, fill_color=DARK_CARD, line_color=ACCENT_BLUE, line_width=1.5)
     add_fade_animation(s, card, 900)
 
-    pres_by = add_text(s, "Presented by", 3.8, 4.3, 5.7, 0.45,
+    pres_by = add_text(s, "Presented by", 0.6, 4.6, 5.5, 0.45,
                        font_size=13, bold=True, color=GOLD, align=PP_ALIGN.CENTER)
     add_fade_animation(s, pres_by, 1000)
 
@@ -352,9 +347,20 @@ def slide_01_title(prs):
         "▸  Member 5",
     ]
     for i, m in enumerate(members):
-        mt = add_text(s, m, 4.1, 4.75 + i * 0.34, 5.1, 0.35,
+        mt = add_text(s, m, 0.9, 5.05 + i * 0.34, 4.9, 0.35,
                       font_size=13, bold=False, color=WHITE, align=PP_ALIGN.LEFT)
         add_fade_animation(s, mt, 1100 + i * 150)
+
+    # RIGHT SIDE: The user's split image (stadiums)
+    img_path = r"C:\Users\mdsom\Desktop\Tahorim AI\Abid\user_split_image.jpg"
+    if os.path.exists(img_path):
+        # Add a premium card border for the image
+        img_border = add_rect(s, 6.8, 0.9, 5.7, 5.7, fill_color=None, line_color=GOLD, line_width=2.5)
+        add_zoom_animation(s, img_border, 600)
+        
+        # Place the image inside the border
+        img_shape = s.shapes.add_picture(img_path, Inches(6.85), Inches(0.95), Inches(5.6), Inches(5.6))
+        add_zoom_animation(s, img_shape, 700)
 
     # Bottom bar
     bot = add_rect(s, 0, 7.3, 13.33, 0.2, fill_color=RGBColor(0x10,0x18,0x30))
