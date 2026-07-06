@@ -299,12 +299,12 @@ def slide_01_title(prs):
     fill_bg(s, DARK_BG)
 
     # Background image (stadium split screen)
-    img_path = r"C:\Users\mdsom\Desktop\Tahorim AI\Abid\slide1_background.png"
+    img_path = r"C:\Users\mdsom\Desktop\Tahorim AI\Abid\user_split_image.jpg"
     if os.path.exists(img_path):
         s.shapes.add_picture(img_path, Inches(0), Inches(0), Inches(13.33), Inches(7.5))
 
     # Translucent overlay
-    overlay = add_overlay_rect(s, 0, 0, 13.33, 7.5, DARK_BG, 0.85)
+    overlay = add_overlay_rect(s, 0, 0, 13.33, 7.5, DARK_BG, 0.80)
 
     # Green accent top bar
     top = add_rect(s, 0, 0, 13.33, 0.12, fill_color=GREEN)
